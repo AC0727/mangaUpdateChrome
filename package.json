@@ -1,0 +1,10 @@
+{
+  "name": "mangaUpdateChrome",
+  "version": "1.0.0",
+  "dependencies": {
+    "request-promise": "^4.2.6"
+  },
+  "devDependencies": {
+    "puppeteer": "^10.1.0"
+  }
+}
