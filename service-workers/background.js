@@ -2,6 +2,13 @@ console.log("start");
 throw new Error("lol");
 console.log("end");
 
+//where to place this in background?
+chrome.runtime.onMessage.addListener(data => {
+  if (data.type === 'notification') {
+    chrome.notifications.create('', data.options);
+  }
+});
+
 chrome.runtime.onInstalled.addListener(() => {
   console.log('Installed');
   scheduleRequest();
@@ -37,13 +44,6 @@ chrome.alarms.onAlarm.onInstalled((alarm) => {
 
 });
 
-//where to place this in background?
-chrome.runtime.onMessage.addListener(data => {
-  if (data.type === 'notification') {
-    chrome.notifications.create('', data.options);
-  }
-});
-
 //-------------------------------------------------------------
 
 // schedule new fetch every 30 min
@@ -70,7 +70,7 @@ function fetchUpdate() {
   let manga = "my hero academia"; //for testing
   manga = manga.toLowerCase().replace(/ /g, "_"); //g is to replace all occurence of a space
   const url = 'http://fanfox.net/manga/' + manga;
-  const fetch = require("../updateCh.js");
+  const fetch = require("./updateCh.js");
 
   return fetch.checkUpdate(url);
 
