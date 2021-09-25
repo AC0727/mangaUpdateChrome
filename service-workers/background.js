@@ -67,7 +67,7 @@ async function startRequest() {
 
 
 function fetchUpdate() {
-  let manga = "my hero academia";
+  let manga = "my hero academia"; //for testing
   manga = manga.toLowerCase().replace(/ /g, "_"); //g is to replace all occurence of a space
   const url = 'http://fanfox.net/manga/' + manga;
   const fetch = require("../updateCh.js");
